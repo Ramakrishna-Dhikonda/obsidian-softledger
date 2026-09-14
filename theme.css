@@ -19,14 +19,14 @@
   /* Accents */
   --sl-accent: #A3E635;
   --sl-accent-bright: #B1FF40;
-  --sl-accent-soft: rgba(163, 230, 53, 0.22);
+  --sl-accent-soft: rgba(163, 230, 53, 0.28);
   --sl-accent-ink: #1A1A1A;
-  --sl-pill: #1A1A1A;
+  --sl-pill: #2D2D2D;
   --sl-pill-text: #FFFFFF;
 
   /* Text */
-  --sl-text: #1A1A1A;
-  --sl-text-secondary: #71717A;
+  --sl-text: #1F2937;
+  --sl-text-secondary: #6B7280;
   --sl-text-muted: #9CA3AF;
   --sl-text-on-accent: #1A1A1A;
 
