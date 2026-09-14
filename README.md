@@ -44,22 +44,21 @@ Softledger maps a finance-dashboard soft-UI system onto Obsidian:
 
 | Token / idea | Value / behavior |
 | --- | --- |
-| App canvas | `#F5F7FA` (light) / `#12141A` (dark) |
-| Cards / panels | `#FFFFFF` / elevated dark surfaces, radius ~16–20px |
-| Accent | Lime `#A3E635` / `#B1FF40` — CTAs, checkboxes, positive chips |
-| Active tabs | Charcoal (or light-on-dark) **pill** with high contrast text |
-| Depth | Soft drop shadows over hard borders |
-| Type | Inter / system geometric sans via `--font-interface` / `--font-text` |
+| App canvas | `#F5F7F8` (light) / `#1A1C1E` (dark) |
+| Cards / panels | `#FFFFFF` / `#242628`, radius ~20px |
+| Accent | Lime `#A3E635` — CTAs, focus, positive |
+| Active tabs | Charcoal `#2D2D2D` **pill** + white text (light) |
+| Depth | Soft diffused shadows over hard borders |
+| Type | Inter / system UI via `--font-interface` / `--font-text` |
 | Ribbon | Narrow, blended into canvas; active icon as pill/circle |
 
 **Key CSS variables** (theme-owned `--sl-*`, mapped to Obsidian tokens):
 
-- `--sl-bg-app`, `--sl-bg-card`, `--sl-bg-muted`
-- `--sl-accent`, `--sl-accent-bright`, `--sl-accent-soft`
-- `--sl-pill`, `--sl-pill-text`
-- `--sl-text`, `--sl-text-secondary`, `--sl-text-muted`
-- `--sl-success` / `--sl-warning` / `--sl-danger` (+ `*-bg`)
-- `--sl-shadow-sm|md|lg`, `--sl-radius-*`, `--sl-radius-pill`
+- `--sl-canvas`, `--sl-card`, `--sl-subtle`
+- `--sl-lime`, `--sl-lime-muted`, `--sl-forest`
+- `--sl-charcoal` (active pill), heading/body/muted text tokens
+- `--sl-success` / `--sl-warning` / `--sl-danger`
+- `--sl-shadow-soft|float`, `--sl-radius-card|pill|control`
 
 Obsidian mappings include `--background-primary|secondary`, `--interactive-accent`, `--text-*`, `--nav-item-*`, `--ribbon-background`, tab radii, and modal radii.
 
