@@ -6,7 +6,9 @@ A lightweight [Obsidian](https://obsidian.md) community theme inspired by modern
 
 ## Screenshots
 
-![Softledger workspace in Obsidian](docs/screenshots/workspace.png)
+![Softledger light](docs/screenshots/softledger-light.png)
+
+![Softledger dark](docs/screenshots/softledger-dark.png)
 
 ## Screenshots
 
@@ -15,7 +17,7 @@ A lightweight [Obsidian](https://obsidian.md) community theme inspired by modern
 | ![Softledger light](docs/refs/ref-1.png) | *(dark mode keeps soft-card language)* |
 | ![Softledger overview](docs/refs/ref-2.png) | ![Softledger cards](docs/refs/ref-3.png) |
 
-> Reference mockups live in `docs/refs/`. Replace with live vault screenshots when publishing.
+> Design refs: `docs/refs/`. Live vault shots: `docs/screenshots/`.
 
 ## Install
 
