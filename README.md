@@ -6,6 +6,10 @@ A lightweight [Obsidian](https://obsidian.md) community theme inspired by modern
 
 ## Screenshots
 
+![Softledger workspace in Obsidian](docs/screenshots/workspace.png)
+
+## Screenshots
+
 | Light | Dark |
 | --- | --- |
 | ![Softledger light](docs/refs/ref-1.png) | *(dark mode keeps soft-card language)* |
