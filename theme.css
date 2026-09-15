@@ -1,4 +1,4 @@
-/* Softledger — Obsidian community theme v0.2.0
+/* Softledger — Obsidian community theme v0.2.1
    Finance-dashboard soft UI. Tokens first; no one-off hex in selectors. */
 
 /* ==========================================================================
@@ -6,7 +6,7 @@
    ========================================================================== */
 .theme-light {
   /* —— Color —— */
-  --sl-app-bg: #F5F7F9;
+  --sl-app-bg: #F5F7F8;
   --sl-surface: #FFFFFF;
   --sl-surface-elevated: #FFFFFF;
   --sl-border: #E5E7EB;
@@ -20,10 +20,10 @@
   --sl-danger: #EF4444;
   --sl-success: #22C55E;
   --sl-warning: #EAB308;
-  --sl-pill-bg: #1A1A1A;
+  --sl-pill-bg: #2D2D2D;
   --sl-pill-text: #FFFFFF;
   --sl-forest: #14532D;
-  --sl-overlay: rgba(245, 247, 249, 0.72);
+  --sl-overlay: rgba(245, 247, 248, 0.72);
   --sl-hover: rgba(0, 0, 0, 0.04);
   --sl-active: rgba(163, 230, 53, 0.16);
   --sl-focus-ring: rgba(163, 230, 53, 0.28);
@@ -158,6 +158,9 @@
   --tab-text-color-focused-active-current: var(--sl-pill-text);
   --tab-outline-color: transparent;
   --tab-divider-color: transparent;
+  --tab-curve: 0;
+  --header-height: 40px;
+  --clickable-icon-radius: var(--sl-radius-pill);
   --status-bar-background: var(--sl-app-bg);
   --status-bar-border-color: transparent;
   --divider-color: var(--sl-border-subtle);
@@ -199,7 +202,8 @@
   --icon-color-hover: var(--sl-text);
   --icon-color-active: var(--sl-text);
   --icon-color-focused: var(--sl-text);
-  --icon-opacity: 0.85;
+  --icon-size: var(--sl-icon-size);
+  --icon-opacity: 1;
   --icon-opacity-hover: 1;
   --icon-opacity-active: 1;
 
@@ -226,7 +230,7 @@
    2. Design tokens — Dark (soft-card twin)
    ========================================================================== */
 .theme-dark {
-  --sl-app-bg: #141618;
+  --sl-app-bg: #1A1C1E;
   --sl-surface: #1E2124;
   --sl-surface-elevated: #25282C;
   --sl-border: rgba(255, 255, 255, 0.1);
@@ -240,8 +244,8 @@
   --sl-danger: #F87171;
   --sl-success: #4ADE80;
   --sl-warning: #FACC15;
-  --sl-pill-bg: #3F3F46;
-  --sl-pill-text: #FFFFFF;
+  --sl-pill-bg: #E8EAED;
+  --sl-pill-text: #1A1C1E;
   --sl-forest: #A3E635;
   --sl-overlay: rgba(20, 22, 24, 0.78);
   --sl-hover: rgba(255, 255, 255, 0.05);
@@ -372,6 +376,9 @@
   --tab-text-color-focused-active-current: var(--sl-pill-text);
   --tab-outline-color: transparent;
   --tab-divider-color: transparent;
+  --tab-curve: 0;
+  --header-height: 40px;
+  --clickable-icon-radius: var(--sl-radius-pill);
   --status-bar-background: var(--sl-app-bg);
   --status-bar-border-color: transparent;
   --divider-color: var(--sl-border-subtle);
@@ -413,7 +420,8 @@
   --icon-color-hover: var(--sl-text);
   --icon-color-active: var(--sl-text);
   --icon-color-focused: var(--sl-text);
-  --icon-opacity: 0.85;
+  --icon-size: var(--sl-icon-size);
+  --icon-opacity: 1;
   --icon-opacity-hover: 1;
   --icon-opacity-active: 1;
 
@@ -503,7 +511,7 @@ body {
   color: var(--sl-text);
 }
 
-/* Tab bar — active = charcoal pill */
+/* Tab bar — active = charcoal pill (no classic curve slivers) */
 .workspace-tabs {
   background-color: var(--sl-app-bg);
   padding: var(--sl-space-2) var(--sl-space-2) 0;
@@ -512,19 +520,33 @@ body {
 .workspace-tab-header-container {
   background-color: transparent;
   border: none;
+  border-bottom: none;
+  height: auto;
+  min-height: calc(var(--sl-control-h) + var(--sl-space-2));
   padding: var(--sl-space-1) var(--sl-space-2);
   gap: var(--sl-space-1);
   align-items: center;
+  overflow: visible;
 }
 
+.workspace-tab-header-container-inner {
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  align-items: center;
+  gap: var(--sl-space-1);
+}
+
+.workspace-tab-header-container .workspace-tab-header,
 .workspace-tab-header {
   display: flex;
   align-items: center;
   height: var(--sl-control-h);
+  min-height: var(--sl-control-h);
   border-radius: var(--sl-radius-pill);
   border: none;
   padding: 0 var(--sl-space-3);
-  margin: 0 var(--sl-space-1);
+  margin: 0;
   background: transparent;
   color: var(--tab-text-color);
   box-shadow: none;
@@ -532,15 +554,35 @@ body {
   font-size: var(--sl-text-md);
 }
 
+.workspace-tab-header-container .workspace-tab-header::before,
+.workspace-tab-header-container .workspace-tab-header::after {
+  content: none;
+  display: none;
+  box-shadow: none;
+}
+
+.workspace-tab-header-container .workspace-tab-header:not(.is-active):hover,
 .workspace-tab-header:hover {
   background-color: var(--sl-hover);
   color: var(--sl-text-secondary);
 }
 
+.workspace-tab-header-container .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+  background-color: transparent;
+}
+
+.workspace-tab-header-container .workspace-tab-header.is-active,
 .workspace-tab-header.is-active {
   background-color: var(--sl-pill-bg);
   color: var(--sl-pill-text);
   box-shadow: var(--sl-shadow-sm);
+}
+
+.workspace-split.mod-root .workspace-tab-header-container .workspace-tab-header.is-active::before,
+.workspace-split.mod-root .workspace-tab-header-container .workspace-tab-header.is-active::after {
+  content: none;
+  display: none;
+  box-shadow: none;
 }
 
 .workspace-tab-header.is-active .workspace-tab-header-inner-title,
@@ -554,6 +596,9 @@ body {
   align-items: center;
   gap: var(--sl-space-2);
   padding: 0;
+  height: 100%;
+  background: transparent;
+  border-radius: var(--sl-radius-pill);
 }
 
 .workspace-tab-header-inner-title {
@@ -565,6 +610,17 @@ body {
   border-radius: var(--sl-radius-pill);
   width: var(--sl-control-h);
   height: var(--sl-control-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.workspace-tab-header-new-tab .clickable-icon,
+.workspace-tab-header-tab-list .clickable-icon {
+  width: var(--sl-control-h);
+  height: var(--sl-control-h);
+  padding: 0;
+  color: var(--sl-text-secondary);
 }
 
 /* Main leaf cards */
@@ -584,8 +640,10 @@ body {
   background-color: transparent;
   border: none;
   height: var(--sl-control-h-lg);
+  min-height: var(--sl-control-h-lg);
   padding: 0 var(--sl-space-3);
   align-items: center;
+  gap: var(--sl-space-2);
 }
 
 .view-header-title {
@@ -594,16 +652,38 @@ body {
   font-size: var(--sl-text-base);
 }
 
+.view-header-nav-buttons,
+.view-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sl-space-1);
+  --icon-size: var(--sl-icon-size);
+}
+
+.view-header .clickable-icon,
 .view-action {
   display: flex;
   align-items: center;
   justify-content: center;
   width: var(--sl-control-h);
   height: var(--sl-control-h);
+  min-width: var(--sl-control-h);
+  padding: 0;
+  border: none;
   border-radius: var(--sl-radius-pill);
   color: var(--sl-text-secondary);
+  background-color: transparent;
+  box-shadow: none;
 }
 
+.view-header .clickable-icon svg,
+.view-action svg {
+  width: var(--sl-icon-size);
+  height: var(--sl-icon-size);
+  opacity: 1;
+}
+
+.view-header .clickable-icon:hover,
 .view-action:hover {
   background-color: var(--sl-hover);
   color: var(--sl-text);
@@ -751,12 +831,25 @@ button,
   justify-content: center;
   width: var(--sl-control-h);
   height: var(--sl-control-h);
+  min-width: var(--sl-control-h);
+  padding: 0;
+  border: none;
+  border-radius: var(--sl-radius-pill);
   color: var(--sl-text-secondary);
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.clickable-icon svg {
+  opacity: 1;
+  width: var(--sl-icon-size);
+  height: var(--sl-icon-size);
 }
 
 .clickable-icon:hover {
   background-color: var(--sl-hover);
   color: var(--sl-text);
+  box-shadow: none;
 }
 
 .clickable-icon:active,
@@ -1059,8 +1152,19 @@ input[type="range"] {
   color: var(--sl-text);
 }
 
+/* Obsidian sets pale --background-modifier-hover via body:not(.is-phone) — match that specificity */
+body:not(.is-phone) .vertical-tab-nav-item.is-active,
+body:not(.is-phone) .horizontal-tab-nav-item.is-active,
 .vertical-tab-nav-item.is-active {
   background-color: var(--sl-pill-bg);
+  color: var(--sl-pill-text);
+  font-weight: var(--sl-weight-semibold);
+}
+
+body:not(.is-phone) .vertical-tab-nav-item.is-active .vertical-tab-nav-item-icon,
+.vertical-tab-nav-item.is-active .vertical-tab-nav-item-icon,
+body:not(.is-phone) .vertical-tab-nav-item.is-active .vertical-tab-nav-item-title,
+.vertical-tab-nav-item.is-active .vertical-tab-nav-item-title {
   color: var(--sl-pill-text);
 }
 

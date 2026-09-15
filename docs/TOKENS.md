@@ -4,11 +4,13 @@ Single source of truth for the theme. All component styles consume `--sl-*` toke
 
 Light is the hero (finance-dashboard soft UI). Dark is a coherent soft-card twin — same structure, not a lazy invert.
 
+**Fidelity lock (must match refs):** light canvas `#F5F7F8`, charcoal pill `#2D2D2D`, dark canvas `#1A1C1E`. Variable names in this file are SoT for CSS.
+
 ## Color
 
 | Token | CSS variable | Light | Dark | Use |
 |-------|--------------|-------|------|-----|
-| App bg | `--sl-app-bg` | `#F5F7F9` | `#141618` | Workspace canvas, ribbon, title/status bar |
+| App bg | `--sl-app-bg` | `#F5F7F8` | `#1A1C1E` | Workspace canvas, ribbon, title/status bar |
 | Surface | `--sl-surface` | `#FFFFFF` | `#1E2124` | Cards, editor, sidebars |
 | Surface elevated | `--sl-surface-elevated` | `#FFFFFF` | `#25282C` | Modals, menus, notices |
 | Border | `--sl-border` | `#E5E7EB` | `rgba(255,255,255,0.1)` | Inputs, secondary buttons |
@@ -22,8 +24,8 @@ Light is the hero (finance-dashboard soft UI). Dark is a coherent soft-card twin
 | Danger | `--sl-danger` | `#EF4444` | `#F87171` | Errors, destructive |
 | Success | `--sl-success` | `#22C55E` | `#4ADE80` | Success states |
 | Warning | `--sl-warning` | `#EAB308` | `#FACC15` | Warnings |
-| Pill bg | `--sl-pill-bg` | `#1A1A1A` | `#3F3F46` | Active tab / selected nav |
-| Pill text | `--sl-pill-text` | `#FFFFFF` | `#FFFFFF` | On pill backgrounds |
+| Pill bg | `--sl-pill-bg` | `#2D2D2D` | `#E8EAED` | Active tab / selected nav (charcoal / light twin) |
+| Pill text | `--sl-pill-text` | `#FFFFFF` | `#1A1C1E` | On pill backgrounds |
 
 Supporting: `--sl-forest`, `--sl-overlay`, `--sl-hover`, `--sl-active`, `--sl-focus-ring`, `--sl-selection`, `--sl-scrollbar`, `--sl-disabled-opacity`.
 
