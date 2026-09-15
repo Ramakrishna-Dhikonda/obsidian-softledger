@@ -1,4 +1,4 @@
-/* Softledger — Obsidian community theme v1.0.0
+/* Softledger — Obsidian community theme v1.0.1
    Education/schedule soft UI (docs/refs/v3). Tokens first; no one-off hex in selectors. */
 
 /* ==========================================================================
@@ -23,7 +23,10 @@
   --sl-link-hover: #4848C7;
   --sl-danger: #E05A5A;
   --sl-success: #2F9E6B;
+  --sl-success-text: #1B7A4E;
   --sl-warning: #D4A017;
+  --sl-warning-text: #9A7209;
+  --sl-danger-text: #C43D3D;
   --sl-pill-bg: #111111;
   --sl-pill-text: #FFFFFF;
   --sl-nav-active-bg: #FFFFFF;
@@ -39,7 +42,7 @@
   --sl-overlay: rgba(244, 244, 247, 0.72);
   --sl-hover: rgba(17, 17, 17, 0.04);
   --sl-active: rgba(17, 17, 17, 0.08);
-  --sl-focus-ring: rgba(17, 17, 17, 0.16);
+  --sl-focus-ring: rgba(17, 17, 17, 0.55);
   --sl-disabled-opacity: 0.4;
   --sl-selection: rgba(91, 91, 214, 0.18);
   --sl-scrollbar: rgba(142, 142, 147, 0.4);
@@ -110,9 +113,9 @@
   --text-faint: var(--sl-text-muted);
   --text-on-accent: var(--sl-pill-text);
   --text-on-accent-inverted: var(--sl-pill-text);
-  --text-success: var(--sl-success);
-  --text-warning: var(--sl-warning);
-  --text-error: var(--sl-danger);
+  --text-success: var(--sl-success-text);
+  --text-warning: var(--sl-warning-text);
+  --text-error: var(--sl-danger-text);
   --text-accent: var(--sl-link);
   --text-accent-hover: var(--sl-link-hover);
   --text-selection: var(--sl-selection);
@@ -126,7 +129,7 @@
   --interactive-accent: var(--sl-accent);
   --interactive-accent-hover: var(--sl-accent-hover);
   --interactive-normal: var(--sl-surface-alt);
-  --interactive-hover: #E4E4E8;
+  --interactive-hover: var(--sl-border);
   --interactive-success: var(--sl-success);
 
   --color-accent: var(--sl-accent);
@@ -169,7 +172,7 @@
   --ribbon-background-collapsed: var(--sl-sidebar-bg);
   --tab-container-background: var(--sl-app-bg);
   --tab-background-active: var(--sl-pill-bg);
-  --tab-text-color: var(--sl-text-muted);
+  --tab-text-color: var(--sl-text-secondary);
   --tab-text-color-active: var(--sl-pill-text);
   --tab-text-color-focused: var(--sl-text-secondary);
   --tab-text-color-focused-active: var(--sl-pill-text);
@@ -266,7 +269,10 @@
   --sl-link-hover: #C0C1F8;
   --sl-danger: #F08080;
   --sl-success: #5DCEA0;
+  --sl-success-text: #7DDBB5;
   --sl-warning: #E8C04A;
+  --sl-warning-text: #F0D070;
+  --sl-danger-text: #F5A0A0;
   --sl-pill-bg: #F2F2F4;
   --sl-pill-text: #111111;
   --sl-nav-active-bg: #2F303A;
@@ -282,7 +288,7 @@
   --sl-overlay: rgba(20, 21, 26, 0.78);
   --sl-hover: rgba(255, 255, 255, 0.05);
   --sl-active: rgba(255, 255, 255, 0.1);
-  --sl-focus-ring: rgba(242, 242, 244, 0.22);
+  --sl-focus-ring: rgba(242, 242, 244, 0.6);
   --sl-disabled-opacity: 0.4;
   --sl-selection: rgba(165, 166, 240, 0.28);
   --sl-scrollbar: rgba(160, 160, 171, 0.35);
@@ -347,9 +353,9 @@
   --text-faint: var(--sl-text-muted);
   --text-on-accent: var(--sl-pill-text);
   --text-on-accent-inverted: var(--sl-pill-text);
-  --text-success: var(--sl-success);
-  --text-warning: var(--sl-warning);
-  --text-error: var(--sl-danger);
+  --text-success: var(--sl-success-text);
+  --text-warning: var(--sl-warning-text);
+  --text-error: var(--sl-danger-text);
   --text-accent: var(--sl-link);
   --text-accent-hover: var(--sl-link-hover);
   --text-selection: var(--sl-selection);
@@ -363,7 +369,7 @@
   --interactive-accent: var(--sl-accent);
   --interactive-accent-hover: var(--sl-accent-hover);
   --interactive-normal: var(--sl-surface-elevated);
-  --interactive-hover: #353644;
+  --interactive-hover: var(--sl-surface-alt);
   --interactive-success: var(--sl-success);
 
   --color-accent: var(--sl-accent);
@@ -406,7 +412,7 @@
   --ribbon-background-collapsed: var(--sl-sidebar-bg);
   --tab-container-background: var(--sl-app-bg);
   --tab-background-active: var(--sl-pill-bg);
-  --tab-text-color: var(--sl-text-muted);
+  --tab-text-color: var(--sl-text-secondary);
   --tab-text-color-active: var(--sl-pill-text);
   --tab-text-color-focused: var(--sl-text-secondary);
   --tab-text-color-focused-active: var(--sl-pill-text);
@@ -528,7 +534,7 @@ body {
 .workspace-ribbon .side-dock-ribbon-action.is-active {
   background-color: var(--sl-nav-active-bg);
   color: var(--sl-nav-active-text);
-  box-shadow: var(--sl-shadow-sm);
+  box-shadow: var(--sl-shadow-md);
 }
 
 /* Sidebars — lavender-tint soft panel */
@@ -745,9 +751,9 @@ body {
 .status-bar {
   background-color: var(--sl-app-bg);
   border-top: none;
-  color: var(--sl-text-muted);
+  color: var(--sl-text-secondary);
   padding: var(--sl-space-1) var(--sl-space-3);
-  min-height: 28px;
+  min-height: var(--sl-control-h);
   font-size: var(--sl-text-sm);
   gap: var(--sl-space-3);
 }
@@ -795,7 +801,7 @@ body {
 .nav-action-button.is-active {
   background-color: var(--sl-nav-active-bg);
   color: var(--sl-nav-active-text);
-  box-shadow: var(--sl-shadow-sm);
+  box-shadow: var(--sl-shadow-md);
 }
 
 .nav-files-container {
@@ -824,13 +830,14 @@ body {
   color: var(--sl-text);
 }
 
-/* Active nav = WHITE pill */
+/* Active nav = WHITE pill (stronger selected cue) */
 .nav-file-title.is-active,
 .tree-item-self.is-active,
 .tree-item-self.is-selected {
   background-color: var(--sl-nav-active-bg);
   color: var(--sl-nav-active-text);
-  box-shadow: var(--sl-shadow-sm);
+  box-shadow: var(--sl-shadow-md);
+  border: 1px solid var(--sl-border);
   font-weight: var(--sl-weight-semibold);
 }
 
@@ -934,7 +941,7 @@ button,
 button.mod-cta {
   height: var(--sl-control-h-lg);
   background-color: var(--sl-pill-bg);
-  color: var(--sl-pill-text);
+  color: var(--text-on-accent);
   font-weight: var(--sl-weight-semibold);
   border: none;
   box-shadow: var(--sl-shadow-sm);
@@ -943,7 +950,7 @@ button.mod-cta {
 
 button.mod-cta:hover {
   background-color: var(--sl-accent-hover);
-  color: var(--sl-pill-text);
+  color: var(--text-on-accent);
 }
 
 button.mod-cta:active {
@@ -1015,7 +1022,7 @@ textarea:focus,
 select:focus,
 .dropdown:focus {
   border-color: var(--sl-accent);
-  box-shadow: 0 0 0 3px var(--sl-focus-ring);
+  box-shadow: 0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-accent);
   outline: none;
 }
 
@@ -1033,8 +1040,9 @@ input[type="checkbox"],
   border-radius: var(--sl-radius-sm);
   border: 1.5px solid var(--sl-border);
   background-color: var(--sl-surface);
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
 }
 
 input[type="checkbox"]:checked,
@@ -1044,7 +1052,7 @@ input[type="checkbox"]:checked,
 }
 
 input[type="checkbox"]:focus-visible {
-  box-shadow: 0 0 0 3px var(--sl-focus-ring);
+  box-shadow: 0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-accent);
 }
 
 /* Toggle — black track when on */
@@ -1313,7 +1321,7 @@ a.tag,
   border-radius: var(--sl-radius-pill);
   font-size: var(--sl-text-sm);
   font-weight: var(--sl-weight-medium);
-  padding: 0.15em 0.65em;
+  padding: var(--sl-space-1) var(--sl-space-3);
   text-decoration: none;
 }
 
@@ -1541,14 +1549,24 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active .vertical-tab-nav-item-titl
   background: transparent;
 }
 
-/* Focus-visible consistency */
+/* Focus-visible consistency (UX P0 — dual ring + coverage) */
 button:focus-visible,
 .clickable-icon:focus-visible,
 .workspace-tab-header:focus-visible,
 .nav-file-title:focus-visible,
-.tree-item-self:focus-visible {
+.tree-item-self:focus-visible,
+.side-dock-ribbon-action:focus-visible,
+.nav-action-button:focus-visible,
+.vertical-tab-nav-item:focus-visible,
+.menu-item:focus-visible,
+.suggestion-item:focus-visible,
+.modal-close-button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.dropdown:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px var(--sl-focus-ring);
+  box-shadow: 0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-accent);
 }
 
 /* Empty state / progress */
@@ -1576,7 +1594,7 @@ button:focus-visible,
   background-color: var(--sl-badge-bg);
   color: var(--sl-badge-text);
   border-radius: var(--sl-radius-pill);
-  font-size: 10px;
+  font-size: var(--sl-text-xs);
   font-weight: var(--sl-weight-semibold);
   min-width: 16px;
   height: 16px;
