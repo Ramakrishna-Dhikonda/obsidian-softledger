@@ -4,7 +4,7 @@ A lightweight [Obsidian](https://obsidian.md) community theme inspired by **educ
 
 **Author:** Ramakrishna Dhikonda · **License:** MIT
 
-**Version:** 1.0.0 — complete rewrite from `docs/refs/v3` (replaces the older lime-finance look).
+**Version:** 1.0.1 — education soft UI (from `docs/refs/v3`); P0/P1 a11y polish. No lime-finance accent.
 
 Design tokens: [`docs/TOKENS.md`](docs/TOKENS.md) · Visual spec: [`docs/VISUAL_SPEC.md`](docs/VISUAL_SPEC.md)
 

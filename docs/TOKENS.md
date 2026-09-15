@@ -1,4 +1,4 @@
-# Softledger design tokens (v1.0.0)
+# Softledger design tokens (v1.0.1)
 
 Single source of truth for CSS. All component styles consume `--sl-*` (mapped to Obsidian vars). **No scattered one-off hex in selectors.**
 
@@ -26,7 +26,10 @@ Light is the hero (education/schedule soft UI from `docs/refs/v3`). Dark is a co
 | Link | `--sl-link` | `#5B5BD6` | `#A5A6F0` | Inline / external links |
 | Danger | `--sl-danger` | `#E05A5A` | `#F08080` | Errors |
 | Success | `--sl-success` | `#2F9E6B` | `#5DCEA0` | Success |
-| Warning | `--sl-warning` | `#D4A017` | `#E8C04A` | Warnings |
+| Warning | `--sl-warning` | `#D4A017` | `#E8C04A` | Warning fills / chips |
+| Success text | `--sl-success-text` | `#1B7A4E` | `#7DDBB5` | `--text-success` (AA body) |
+| Warning text | `--sl-warning-text` | `#9A7209` | `#F0D070` | `--text-warning` (AA body; ~4.39:1 light) |
+| Danger text | `--sl-danger-text` | `#C43D3D` | `#F5A0A0` | `--text-error` (AA body) |
 | Pill primary bg | `--sl-pill-bg` | `#111111` | `#F2F2F4` | Black (light) / light (dark) solid pills |
 | Pill primary text | `--sl-pill-text` | `#FFFFFF` | `#111111` | On primary pills |
 | Nav active bg | `--sl-nav-active-bg` | `#FFFFFF` | `#2F303A` | **White pill** sidebar/explorer |
@@ -45,7 +48,7 @@ Light is the hero (education/schedule soft UI from `docs/refs/v3`). Dark is a co
 | `--sl-pastel-coral` | `#F5D0CC` | `rgba(240,160,150,0.16)` |
 | `--sl-pastel-cream` | `#F5F0E6` | `rgba(230,220,190,0.12)` |
 
-Supporting: `--sl-overlay`, `--sl-hover`, `--sl-active`, `--sl-focus-ring`, `--sl-selection`, `--sl-scrollbar`, `--sl-disabled-opacity`.
+Supporting: `--sl-overlay`, `--sl-hover`, `--sl-active`, `--sl-focus-ring`, `--sl-focus-shadow`, `--sl-selection`, `--sl-scrollbar`, `--sl-disabled-opacity`.
 
 ## Spacing (4px grid)
 
@@ -95,15 +98,24 @@ Supporting: `--sl-overlay`, `--sl-hover`, `--sl-active`, `--sl-focus-ring`, `--s
 |-------|---------|
 | Hover | `--sl-hover` |
 | Active | `--sl-active` or CTA brightness |
-| Focus | `0 0 0 3px var(--sl-focus-ring)` |
+| Focus | `box-shadow: var(--sl-focus-shadow)` → `0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-focus-ring)` |
 | Disabled | `--sl-disabled-opacity` |
 | Nav selected | `--sl-nav-active-bg` + `--sl-nav-active-text` (white pill) |
 | Primary selected | `--sl-pill-bg` + `--sl-pill-text` (black pill) |
 
+## Focus token (1.0.1)
+
+| Token | Value |
+|-------|-------|
+| `--sl-focus-ring` | Light `rgba(17,17,17,0.55)` · Dark `rgba(242,242,244,0.6)` — soft outer halo |
+| `--sl-focus-shadow` | `0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-focus-ring)` — dual ring for `:focus-visible` |
+
+Apply `--sl-focus-shadow` broadly (inputs, buttons, ribbon `.clickable-icon` / `.side-dock-ribbon-action`, `.nav-action-button`, `.vertical-tab-nav-item`, `.menu-item`, `.suggestion-item`, modal close, workspace tab headers).
+
 ## Obsidian mapping
 
 - Surfaces → `--background-primary|secondary*`, `--titlebar-*`, `--ribbon-*`, `--status-bar-*`
-- Text → `--text-normal|muted|faint|accent|*`
+- Text → `--text-normal|muted|faint|accent|*`; `--text-success|warning|error` → `--sl-*-text` companions (fills stay `--sl-success|warning|danger`)
 - Accent → `--interactive-accent*` = black primary; links via `--text-accent` = `--sl-link`
 - Nav → `--nav-item-background-active` = white pill
 - Tabs → `--tab-background-active` = black pill

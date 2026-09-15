@@ -1,18 +1,23 @@
 # Softledger UX flags (education 1.0)
 
-Usability adaptations where soft-UI fidelity fights Obsidian use. **Keep visual language; change the minimum token/selector.** Design SoT: [`TOKENS.md`](TOKENS.md) + `docs/refs/v3`. Audited against theme **v1.0.0**.
+Usability adaptations where soft-UI fidelity fights Obsidian use. **Keep visual language; change the minimum token/selector.** Design SoT: [`TOKENS.md`](TOKENS.md) + `docs/refs/v3`. Audited against theme **v1.0.1** (`c32230a`).
 
 **Fidelity lock (CoS):** active nav = **white pill**; primary CTA / selected tabs = **black solid pill**; pastel cards; indigo links; **no lime**. Finance lime parked in `docs/proposals/finance-lime/`.
 
 Priority: P0 = fix before polish · P1 = next pass · P2 = comfort / a11y depth.
 
+## Status (1.0.1)
+
+**P0 closed.** P1 closed (tabs/status, semantic text, nav selected cue, hit targets). Optional polish: deepen `--sl-warning-text` past 4.5:1 (currently ≈4.39:1). P2 editor measure still optional.
+
 ---
+
 
 ## P0 — Soft keyboard focus — DONE (Theme UI)
 
 **Was:** Light `--sl-focus-ring` 0.16 ≈ 1.4:1; soft ring only; incomplete coverage.
 
-**Landed:** `--sl-focus-ring` → 0.55 / 0.6; dual ring `0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-accent)` on inputs + checkbox + extended `:focus-visible` (ribbon, nav-action, settings nav, menu, suggestion, modal close). CTA `color: var(--text-on-accent)` → `--sl-pill-text` (≈18.9:1 on black). No lime.
+**Landed:** `--sl-focus-ring` → 0.55 / 0.6; `--sl-focus-shadow` = `0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-focus-ring)` on inputs + checkbox + extended `:focus-visible` (ribbon, nav-action, settings nav, menu, suggestion, modal close, tab headers). CTA `color: var(--text-on-accent)` → `--sl-pill-text` (≈18.9:1 on black). No lime.
 
 ---
 
@@ -33,27 +38,21 @@ Priority: P0 = fix before polish · P1 = next pass · P2 = comfort / a11y depth.
 
 ---
 
-## P1 — Semantic text colors
+## P1 — Semantic text colors — DONE
 
-**Issue:** `--sl-warning` `#D4A017` ≈ **2.4:1**, `--sl-success` `#2F9E6B` ≈ **3.4:1**, `--sl-danger` `#E05A5A` ≈ **3.6:1** on white — OK as fills/icons, weak as body text.
-
-**Minimal adaptation:** Darker text companions for Obsidian `--text-warning` / `--text-success` / `--text-error`; leave fill tokens for chips/callouts/pastels.
+**Landed:** `--sl-*-text` companions mapped to `--text-success|warning|error`. Light ratios ≈ success 5.3 / danger 5.1 / warning **4.39** (AA normal is 4.5 — optional deepen warning-text slightly).
 
 ---
 
-## P1 — White nav pill vs lavender sidebar (selected clarity)
+## P1 — White nav selected clarity — DONE
 
-**Issue:** Active nav `#FFFFFF` on sidebar `#F0EFF5` — tiny fill delta; selection leans on `--sl-shadow-sm`. Hover wash can look similar.
-
-**Minimal adaptation:** Keep white pill; strengthen selected cue only (slightly stronger shadow or 1px `--sl-border`). Don’t switch sidebar active to black (fidelity lock).
+**Landed:** Active nav uses `box-shadow: var(--sl-shadow-md)` + `1px solid var(--sl-border)`; settings active keeps shadow-sm.
 
 ---
 
-## P1 — Hit targets — PARTIAL
+## P1 — Hit targets — DONE
 
-**Landed:** Status ≥32 (`--sl-control-h`); tag padding `var(--sl-space-1) var(--sl-space-3)` (4/12); badge `font-size: var(--sl-text-xs)` (11px).
-
-**Open:** Checkbox visual still **16×16** — enlarge hit-area ≥24px (padding/hitbox OK).
+**Landed:** Status 32; tag 4/12; badge 11px; checkbox **24×24**.
 
 ---
 

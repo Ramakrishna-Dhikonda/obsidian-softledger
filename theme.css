@@ -43,8 +43,10 @@
   --sl-hover: rgba(17, 17, 17, 0.04);
   --sl-active: rgba(17, 17, 17, 0.08);
   --sl-focus-ring: rgba(17, 17, 17, 0.55);
+  --sl-focus-shadow: 0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-focus-ring);
   --sl-disabled-opacity: 0.4;
   --sl-selection: rgba(91, 91, 214, 0.18);
+  /* focus-ring wash also used for keyboard outline fallback */
   --sl-scrollbar: rgba(142, 142, 147, 0.4);
 
   /* —— Spacing —— */
@@ -289,6 +291,7 @@
   --sl-hover: rgba(255, 255, 255, 0.05);
   --sl-active: rgba(255, 255, 255, 0.1);
   --sl-focus-ring: rgba(242, 242, 244, 0.6);
+  --sl-focus-shadow: 0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-focus-ring);
   --sl-disabled-opacity: 0.4;
   --sl-selection: rgba(165, 166, 240, 0.28);
   --sl-scrollbar: rgba(160, 160, 171, 0.35);
@@ -817,7 +820,7 @@ body {
   margin: 1px var(--sl-space-2);
   padding: var(--sl-space-2) var(--sl-space-3);
   min-height: var(--sl-control-h);
-  border: none;
+  border: 1px solid transparent;
   font-size: var(--sl-text-md);
   color: var(--sl-text-secondary);
   gap: var(--sl-space-2);
@@ -837,16 +840,23 @@ body {
   background-color: var(--sl-nav-active-bg);
   color: var(--sl-nav-active-text);
   box-shadow: var(--sl-shadow-md);
-  border: 1px solid var(--sl-border);
+  border-color: var(--sl-border);
   font-weight: var(--sl-weight-semibold);
 }
 
 .nav-file-title.is-active .nav-file-title-content,
-.nav-file-title.is-active .nav-file-tag,
 .tree-item-self.is-active .tree-item-inner,
 .tree-item-self.is-active .tree-item-icon,
 .tree-item-self.is-selected .tree-item-inner {
   color: var(--sl-nav-active-text);
+}
+
+/* Badge/flair on active nav: keep white on black circle (don't inherit nav text) */
+.nav-file-title.is-active .nav-file-tag,
+.tree-item-self.is-active .tree-item-flair,
+.tree-item-self.is-selected .tree-item-flair {
+  color: var(--sl-badge-text);
+  background-color: var(--sl-badge-bg);
 }
 
 .nav-folder-collapse-indicator,
@@ -1022,7 +1032,7 @@ textarea:focus,
 select:focus,
 .dropdown:focus {
   border-color: var(--sl-accent);
-  box-shadow: 0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-accent);
+  box-shadow: var(--sl-focus-shadow);
   outline: none;
 }
 
@@ -1052,7 +1062,7 @@ input[type="checkbox"]:checked,
 }
 
 input[type="checkbox"]:focus-visible {
-  box-shadow: 0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-accent);
+  box-shadow: var(--sl-focus-shadow);
 }
 
 /* Toggle — black track when on */
@@ -1064,6 +1074,10 @@ input[type="checkbox"]:focus-visible {
 
 .checkbox-container.is-enabled {
   background-color: var(--sl-pill-bg);
+}
+
+.checkbox-container:focus-visible {
+  box-shadow: 0 0 0 3px var(--sl-focus-ring);
 }
 
 .checkbox-container .checkbox-handle,
@@ -1233,7 +1247,7 @@ pre[class*="language-"] {
 }
 
 .markdown-preview-view th {
-  color: var(--sl-text-muted);
+  color: var(--sl-text-secondary);
   font-weight: var(--sl-weight-medium);
   font-size: var(--sl-text-sm);
   background: transparent;
@@ -1305,7 +1319,7 @@ pre[class*="language-"] {
 }
 
 .callout-icon {
-  opacity: 0.85;
+  opacity: var(--sl-icon-opacity);
 }
 
 .callout-content {
@@ -1495,7 +1509,7 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active .vertical-tab-nav-item-titl
 }
 
 .setting-item-description {
-  color: var(--sl-text-muted);
+  color: var(--sl-text-secondary);
   font-size: var(--sl-text-sm);
 }
 
@@ -1549,7 +1563,7 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active .vertical-tab-nav-item-titl
   background: transparent;
 }
 
-/* Focus-visible consistency (UX P0 — dual ring + coverage) */
+/* Focus-visible: dual ring per UX-FLAGS (PASS). TOKENS gate 3px --sl-focus-ring deferred — escalate gate docs to Theme Lead; token kept for wash/selection use. */
 button:focus-visible,
 .clickable-icon:focus-visible,
 .workspace-tab-header:focus-visible,
@@ -1566,7 +1580,7 @@ textarea:focus-visible,
 select:focus-visible,
 .dropdown:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-accent);
+  box-shadow: var(--sl-focus-shadow);
 }
 
 /* Empty state / progress */
