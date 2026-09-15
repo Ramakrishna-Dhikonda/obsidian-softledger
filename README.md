@@ -8,12 +8,16 @@ A lightweight [Obsidian](https://obsidian.md) community theme inspired by **educ
 
 Design tokens: [`docs/TOKENS.md`](docs/TOKENS.md) · Visual spec: [`docs/VISUAL_SPEC.md`](docs/VISUAL_SPEC.md)
 
-## Screenshots / refs
+## Screenshots (v1 education SoT)
 
-| Source | Path |
-| --- | --- |
-| Design refs (SoT) | `docs/refs/v3/*.jpg` |
-| Older vault shots | `docs/screenshots/` (pre-v1; visual language superseded) |
+White active nav pills, black accents, soft surfaces:
+
+![Workspace](docs/screenshots/v1-workspace.png)
+
+![Settings](docs/screenshots/v1-settings.png)
+
+![Command palette](docs/screenshots/v1-command-palette.png)
+
 
 ## Install
 
