@@ -4,6 +4,8 @@ A lightweight [Obsidian](https://obsidian.md) community theme inspired by modern
 
 **Author:** Ramakrishna Dhikonda · **License:** MIT
 
+**Version:** 0.2.0 — pixel-refinement pass. Design tokens (source of truth): [`docs/TOKENS.md`](docs/TOKENS.md) (v0.2.0).
+
 ## Screenshots
 
 ![Softledger light](docs/screenshots/softledger-light.png)
@@ -50,21 +52,23 @@ Softledger maps a finance-dashboard soft-UI system onto Obsidian:
 
 | Token / idea | Value / behavior |
 | --- | --- |
-| App canvas | `#F5F7F8` (light) / `#1A1C1E` (dark) |
-| Cards / panels | `#FFFFFF` / `#242628`, radius ~20px |
+| App canvas | `#F5F7F9` (light) / `#141618` (dark) |
+| Cards / panels | `#FFFFFF` / `#1E2124`, radius 20px (xl) |
 | Accent | Lime `#A3E635` — CTAs, focus, positive |
-| Active tabs | Charcoal `#2D2D2D` **pill** + white text (light) |
+| Active tabs | Charcoal `#1A1A1A` **pill** + white text (light) |
 | Depth | Soft diffused shadows over hard borders |
 | Type | Inter / system UI via `--font-interface` / `--font-text` |
 | Ribbon | Narrow, blended into canvas; active icon as pill/circle |
 
 **Key CSS variables** (theme-owned `--sl-*`, mapped to Obsidian tokens):
 
-- `--sl-canvas`, `--sl-card`, `--sl-subtle`
-- `--sl-lime`, `--sl-lime-muted`, `--sl-forest`
-- `--sl-charcoal` (active pill), heading/body/muted text tokens
+- `--sl-app-bg`, `--sl-surface`, `--sl-surface-elevated`
+- `--sl-accent`, `--sl-accent-hover`, `--sl-accent-soft`
+- `--sl-pill-bg` / `--sl-pill-text` (active charcoal pill)
+- `--sl-text`, `--sl-text-secondary`, `--sl-text-muted`
 - `--sl-success` / `--sl-warning` / `--sl-danger`
-- `--sl-shadow-soft|float`, `--sl-radius-card|pill|control`
+- `--sl-shadow-sm|md|lg`, `--sl-radius-sm|md|lg|xl|pill`
+- See `docs/TOKENS.md` for the full token sheet
 
 Obsidian mappings include `--background-primary|secondary`, `--interactive-accent`, `--text-*`, `--nav-item-*`, `--ribbon-background`, tab radii, and modal radii.
 
@@ -72,7 +76,7 @@ Obsidian mappings include `--background-primary|secondary`, `--interactive-accen
 
 - Pure CSS — no build step, no background images, no base64 blobs
 - Lean selector set; no expensive universal `*` rules
-- Target size well under ~80KB (`theme.css` is typically ~30KB)
+- Target size well under ~80KB (`theme.css` ~36KB in v0.2.0)
 
 ## Structure
 
