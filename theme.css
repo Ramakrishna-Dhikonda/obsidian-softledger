@@ -46,7 +46,6 @@
   --sl-focus-shadow: 0 0 0 2px var(--sl-text), 0 0 0 4px var(--sl-focus-ring);
   --sl-disabled-opacity: 0.4;
   --sl-selection: rgba(91, 91, 214, 0.18);
-  /* focus-ring wash also used for keyboard outline fallback */
   --sl-scrollbar: rgba(142, 142, 147, 0.4);
 
   /* —— Spacing —— */
@@ -537,6 +536,7 @@ body {
 .workspace-ribbon .side-dock-ribbon-action.is-active {
   background-color: var(--sl-nav-active-bg);
   color: var(--sl-nav-active-text);
+  border: 1px solid var(--sl-border);
   box-shadow: var(--sl-shadow-md);
 }
 
@@ -756,7 +756,7 @@ body {
   border-top: none;
   color: var(--sl-text-secondary);
   padding: var(--sl-space-1) var(--sl-space-3);
-  min-height: var(--sl-control-h);
+  min-height: 32px; /* matches --sl-control-h */
   font-size: var(--sl-text-sm);
   gap: var(--sl-space-3);
 }
@@ -804,6 +804,7 @@ body {
 .nav-action-button.is-active {
   background-color: var(--sl-nav-active-bg);
   color: var(--sl-nav-active-text);
+  border: 1px solid var(--sl-border);
   box-shadow: var(--sl-shadow-md);
 }
 
@@ -1563,7 +1564,7 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active .vertical-tab-nav-item-titl
   background: transparent;
 }
 
-/* Focus-visible: dual ring per UX-FLAGS (PASS). TOKENS gate 3px --sl-focus-ring deferred — escalate gate docs to Theme Lead; token kept for wash/selection use. */
+/* Focus-visible consistency (UX P0 — dual ring via --sl-focus-shadow) */
 button:focus-visible,
 .clickable-icon:focus-visible,
 .workspace-tab-header:focus-visible,
