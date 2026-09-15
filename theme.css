@@ -1485,6 +1485,7 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active,
 body:not(.is-phone) .horizontal-tab-nav-item.is-active {
   background-color: var(--sl-nav-active-bg);
   color: var(--sl-nav-active-text);
+  border: 1px solid var(--sl-border);
   box-shadow: var(--sl-shadow-sm);
   font-weight: var(--sl-weight-semibold);
 }
