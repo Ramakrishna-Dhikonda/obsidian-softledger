@@ -1,5 +1,5 @@
-/* Softledger — Obsidian community theme v1.0.1
-   Education/schedule soft UI (docs/refs/v3). Tokens first; no one-off hex in selectors. */
+/* Softledger — Obsidian community theme v1.1.0
+   Education/schedule soft UI (docs/refs/v3). Strict --sl-* tokens; no one-off hex in selectors. */
 
 /* ==========================================================================
    1. Design tokens — Light (hero)
@@ -25,7 +25,7 @@
   --sl-success: #2F9E6B;
   --sl-success-text: #1B7A4E;
   --sl-warning: #D4A017;
-  --sl-warning-text: #9A7209;
+  --sl-warning-text: #8A6508;
   --sl-danger-text: #C43D3D;
   --sl-pill-bg: #111111;
   --sl-pill-text: #FFFFFF;
@@ -39,7 +39,7 @@
   --sl-pastel-peach: #F8E8C8;
   --sl-pastel-coral: #F5D0CC;
   --sl-pastel-cream: #F5F0E6;
-  --sl-overlay: rgba(244, 244, 247, 0.72);
+  --sl-overlay: rgba(17, 17, 17, 0.35);
   --sl-hover: rgba(17, 17, 17, 0.04);
   --sl-active: rgba(17, 17, 17, 0.08);
   --sl-focus-ring: rgba(17, 17, 17, 0.55);
@@ -56,6 +56,8 @@
   --sl-space-5: 20px;
   --sl-space-6: 24px;
   --sl-space-8: 32px;
+  --sl-space-10: 40px;
+  --sl-space-12: 48px;
 
   /* —— Radii —— */
   --sl-radius-sm: 8px;
@@ -79,6 +81,7 @@
   --sl-text-base: 14px;
   --sl-text-lg: 16px;
   --sl-text-xl: 20px;
+  --sl-text-2xl: 24px;
   --sl-weight-regular: 400;
   --sl-weight-medium: 500;
   --sl-weight-semibold: 600;
@@ -89,6 +92,24 @@
   --sl-control-h-lg: 36px;
   --sl-icon-size: 18px;
   --sl-icon-opacity: 0.72;
+
+  /* —— Surface aliases / geometry extras (strict system) —— */
+  --sl-surface-base: var(--sl-app-bg);
+  --sl-surface-secondary: var(--sl-sidebar-bg);
+  --sl-surface-hover: var(--sl-hover);
+  --sl-surface-active: var(--sl-active);
+  --sl-text-disabled: #B0B0B8;
+  --sl-inactive-pill-bg: var(--sl-surface-alt);
+  --sl-inactive-pill-border: var(--sl-border-subtle);
+  --sl-checkbox-size: 24px;
+  --sl-badge-size: 18px;
+  --sl-radius-2xl: 24px;
+  --sl-border-width: 1px;
+  --sl-border-width-strong: 2px;
+  --sl-accent-bar: 3px;
+  --sl-scrollbar-size: 8px;
+  --sl-textarea-min-h: 80px;
+  --sl-header-height: var(--sl-space-10);
 
   /* —— Obsidian surface map —— */
   --background-primary: var(--sl-surface);
@@ -139,10 +160,10 @@
   --color-base-00: var(--sl-surface);
   --color-base-10: var(--sl-app-bg);
   --color-base-20: var(--sl-surface-alt);
-  --color-base-25: #E8E8EC;
+  --color-base-25: var(--sl-border);
   --color-base-30: var(--sl-border);
-  --color-base-35: #D8D8DE;
-  --color-base-40: #C8C8D0;
+  --color-base-35: var(--sl-text-muted);
+  --color-base-40: var(--sl-text-secondary);
   --color-base-50: var(--sl-text-muted);
   --color-base-60: var(--sl-text-secondary);
   --color-base-70: var(--sl-text);
@@ -150,9 +171,9 @@
   --color-green: var(--sl-success);
   --color-red: var(--sl-danger);
   --color-yellow: var(--sl-warning);
-  --color-orange: #E89A5C;
-  --color-purple: #8B7CF0;
-  --color-blue: #6B8FD6;
+  --color-orange: var(--sl-warning);
+  --color-purple: var(--sl-link);
+  --color-blue: var(--sl-link);
 
   --radius-s: var(--sl-radius-sm);
   --radius-m: var(--sl-radius-md);
@@ -163,7 +184,7 @@
   --checkbox-radius: var(--sl-radius-sm);
   --tab-radius: var(--sl-radius-pill);
   --tab-radius-active: var(--sl-radius-pill);
-  --modal-radius: var(--sl-radius-xl);
+  --modal-radius: var(--sl-radius-2xl);
   --shadow-s: var(--sl-shadow-sm);
   --shadow-l: var(--sl-shadow-lg);
 
@@ -181,14 +202,14 @@
   --tab-outline-color: transparent;
   --tab-divider-color: transparent;
   --tab-curve: 0;
-  --header-height: 40px;
+  --header-height: var(--sl-header-height);
   --clickable-icon-radius: var(--sl-radius-pill);
   --status-bar-background: var(--sl-app-bg);
   --status-bar-border-color: transparent;
   --divider-color: var(--sl-border-subtle);
   --prompt-border-width: 0;
   --modal-border-width: 0;
-  --embed-border-left: 3px solid var(--sl-link);
+  --embed-border-left: var(--sl-accent-bar) solid var(--sl-link);
 
   --size-4-1: var(--sl-space-1);
   --size-4-2: var(--sl-space-2);
@@ -197,6 +218,8 @@
   --size-4-5: var(--sl-space-5);
   --size-4-6: var(--sl-space-6);
   --size-4-8: var(--sl-space-8);
+  --size-4-10: var(--sl-space-10);
+  --size-4-12: var(--sl-space-12);
 
   --font-interface-override: var(--sl-font-ui);
   --font-text-override: var(--sl-font-text);
@@ -301,7 +324,10 @@
   --sl-space-4: 16px;
   --sl-space-5: 20px;
   --sl-space-6: 24px;
+  --sl-space-7: 28px;
   --sl-space-8: 32px;
+  --sl-space-10: 40px;
+  --sl-space-12: 48px;
 
   --sl-radius-sm: 8px;
   --sl-radius-md: 12px;
@@ -322,6 +348,7 @@
   --sl-text-base: 14px;
   --sl-text-lg: 16px;
   --sl-text-xl: 20px;
+  --sl-text-2xl: 24px;
   --sl-weight-regular: 400;
   --sl-weight-medium: 500;
   --sl-weight-semibold: 600;
@@ -331,6 +358,24 @@
   --sl-control-h-lg: 36px;
   --sl-icon-size: 18px;
   --sl-icon-opacity: 0.72;
+
+  --sl-surface-base: var(--sl-app-bg);
+  --sl-surface-secondary: var(--sl-sidebar-bg);
+  --sl-surface-hover: var(--sl-hover);
+  --sl-surface-active: var(--sl-active);
+  --sl-text-disabled: #5A5A66;
+  --sl-inactive-pill-bg: var(--sl-surface-alt);
+  --sl-inactive-pill-border: var(--sl-border-subtle);
+  --sl-checkbox-size: 24px;
+  --sl-badge-size: 18px;
+  --sl-radius-2xl: 24px;
+  --sl-border-width: 1px;
+  --sl-border-width-strong: 2px;
+  --sl-accent-bar: 3px;
+  --sl-scrollbar-size: 8px;
+  --sl-textarea-min-h: 80px;
+  --sl-header-height: var(--sl-space-10);
+  --sl-space-7: 28px;
 
   --background-primary: var(--sl-surface);
   --background-primary-alt: var(--sl-surface-elevated);
@@ -347,7 +392,7 @@
   --background-modifier-form-field-hover: var(--sl-surface-elevated);
   --background-modifier-success: var(--sl-success);
   --background-modifier-error: var(--sl-danger);
-  --background-modifier-error-hover: #fca5a5;
+  --background-modifier-error-hover: var(--sl-danger);
   --background-modifier-message: var(--sl-pill-bg);
 
   --text-normal: var(--sl-text);
@@ -380,10 +425,10 @@
   --color-base-00: var(--sl-app-bg);
   --color-base-10: var(--sl-surface);
   --color-base-20: var(--sl-surface-elevated);
-  --color-base-25: #32333D;
-  --color-base-30: #3C3D48;
-  --color-base-35: #484956;
-  --color-base-40: #5A5B6A;
+  --color-base-25: var(--sl-surface-alt);
+  --color-base-30: var(--sl-border);
+  --color-base-35: var(--sl-text-muted);
+  --color-base-40: var(--sl-text-secondary);
   --color-base-50: var(--sl-text-muted);
   --color-base-60: var(--sl-text-secondary);
   --color-base-70: var(--sl-text);
@@ -391,9 +436,9 @@
   --color-green: var(--sl-success);
   --color-red: var(--sl-danger);
   --color-yellow: var(--sl-warning);
-  --color-orange: #FB923C;
-  --color-purple: #B4A6F5;
-  --color-blue: #8FB0E8;
+  --color-orange: var(--sl-warning);
+  --color-purple: var(--sl-link);
+  --color-blue: var(--sl-link);
 
   --radius-s: var(--sl-radius-sm);
   --radius-m: var(--sl-radius-md);
@@ -404,7 +449,7 @@
   --checkbox-radius: var(--sl-radius-sm);
   --tab-radius: var(--sl-radius-pill);
   --tab-radius-active: var(--sl-radius-pill);
-  --modal-radius: var(--sl-radius-xl);
+  --modal-radius: var(--sl-radius-2xl);
   --shadow-s: var(--sl-shadow-sm);
   --shadow-l: var(--sl-shadow-lg);
 
@@ -422,14 +467,14 @@
   --tab-outline-color: transparent;
   --tab-divider-color: transparent;
   --tab-curve: 0;
-  --header-height: 40px;
+  --header-height: var(--sl-header-height);
   --clickable-icon-radius: var(--sl-radius-pill);
   --status-bar-background: var(--sl-app-bg);
   --status-bar-border-color: transparent;
   --divider-color: var(--sl-border-subtle);
   --prompt-border-width: 0;
   --modal-border-width: 0;
-  --embed-border-left: 3px solid var(--sl-link);
+  --embed-border-left: var(--sl-accent-bar) solid var(--sl-link);
 
   --size-4-1: var(--sl-space-1);
   --size-4-2: var(--sl-space-2);
@@ -438,6 +483,8 @@
   --size-4-5: var(--sl-space-5);
   --size-4-6: var(--sl-space-6);
   --size-4-8: var(--sl-space-8);
+  --size-4-10: var(--sl-space-10);
+  --size-4-12: var(--sl-space-12);
 
   --font-interface-override: var(--sl-font-ui);
   --font-text-override: var(--sl-font-text);
@@ -536,7 +583,7 @@ body {
 .workspace-ribbon .side-dock-ribbon-action.is-active {
   background-color: var(--sl-nav-active-bg);
   color: var(--sl-nav-active-text);
-  border: 1px solid var(--sl-border);
+  border: var(--sl-border-width) solid var(--sl-border-subtle);
   box-shadow: var(--sl-shadow-md);
 }
 
@@ -555,7 +602,7 @@ body {
 
 .workspace-sidedock-vault-profile {
   border: none;
-  border-top: 1px solid var(--sl-border-subtle);
+  border-top: var(--sl-border-width) solid var(--sl-border-subtle);
   padding: var(--sl-space-3) var(--sl-space-4);
 }
 
@@ -596,7 +643,7 @@ body {
   height: var(--sl-control-h);
   min-height: var(--sl-control-h);
   border-radius: var(--sl-radius-pill);
-  border: none;
+  border: var(--sl-border-width) solid transparent;
   padding: 0 var(--sl-space-3);
   margin: 0;
   background: transparent;
@@ -615,9 +662,17 @@ body {
   box-shadow: none;
 }
 
+.workspace-tab-header-container .workspace-tab-header:not(.is-active),
+.workspace-tab-header:not(.is-active) {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--tab-text-color);
+}
+
 .workspace-tab-header-container .workspace-tab-header:not(.is-active):hover,
-.workspace-tab-header:hover {
-  background-color: var(--sl-surface-alt);
+.workspace-tab-header:not(.is-active):hover {
+  background-color: var(--sl-inactive-pill-bg);
+  border-color: var(--sl-inactive-pill-border);
   color: var(--sl-text-secondary);
 }
 
@@ -629,6 +684,7 @@ body {
 .workspace-tab-header.is-active {
   background-color: var(--sl-pill-bg);
   color: var(--sl-pill-text);
+  border-color: var(--sl-pill-bg);
   box-shadow: var(--sl-shadow-sm);
 }
 
@@ -673,8 +729,8 @@ body {
 /* Main leaf — white card */
 .workspace-leaf-content {
   background-color: var(--sl-surface);
-  border-radius: var(--sl-radius-xl);
-  border: none;
+  border-radius: var(--sl-radius-2xl);
+  border: var(--sl-border-width) solid var(--sl-border-subtle);
   box-shadow: var(--sl-shadow-md);
 }
 
@@ -686,7 +742,7 @@ body {
 .workspace-leaf-content .view-header {
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid var(--sl-border-subtle);
+  border-bottom: var(--sl-border-width) solid var(--sl-border-subtle);
   height: var(--sl-control-h-lg);
   min-height: var(--sl-control-h-lg);
   padding: 0 var(--sl-space-3);
@@ -756,7 +812,7 @@ body {
   border-top: none;
   color: var(--sl-text-secondary);
   padding: var(--sl-space-1) var(--sl-space-3);
-  min-height: 32px; /* matches --sl-control-h */
+  min-height: var(--sl-control-h);
   font-size: var(--sl-text-sm);
   gap: var(--sl-space-3);
 }
@@ -804,7 +860,7 @@ body {
 .nav-action-button.is-active {
   background-color: var(--sl-nav-active-bg);
   color: var(--sl-nav-active-text);
-  border: 1px solid var(--sl-border);
+  border: var(--sl-border-width) solid var(--sl-border-subtle);
   box-shadow: var(--sl-shadow-md);
 }
 
@@ -818,10 +874,10 @@ body {
   display: flex;
   align-items: center;
   border-radius: var(--sl-radius-pill);
-  margin: 1px var(--sl-space-2);
+  margin: var(--sl-border-width) var(--sl-space-2);
   padding: var(--sl-space-2) var(--sl-space-3);
   min-height: var(--sl-control-h);
-  border: 1px solid transparent;
+  border: var(--sl-border-width) solid transparent;
   font-size: var(--sl-text-md);
   color: var(--sl-text-secondary);
   gap: var(--sl-space-2);
@@ -841,7 +897,7 @@ body {
   background-color: var(--sl-nav-active-bg);
   color: var(--sl-nav-active-text);
   box-shadow: var(--sl-shadow-md);
-  border-color: var(--sl-border);
+  border-color: var(--sl-border-subtle);
   font-weight: var(--sl-weight-semibold);
 }
 
@@ -887,7 +943,7 @@ body {
   height: var(--sl-control-h-lg);
   border-radius: var(--sl-radius-pill);
   background-color: var(--sl-surface);
-  border: 1px solid transparent;
+  border: var(--sl-border-width) solid transparent;
   padding: 0 var(--sl-space-4);
   font-size: var(--sl-text-base);
   box-shadow: var(--sl-shadow-sm);
@@ -952,7 +1008,7 @@ button,
 button.mod-cta {
   height: var(--sl-control-h-lg);
   background-color: var(--sl-pill-bg);
-  color: var(--text-on-accent);
+  color: var(--sl-pill-text);
   font-weight: var(--sl-weight-semibold);
   border: none;
   box-shadow: var(--sl-shadow-sm);
@@ -961,7 +1017,7 @@ button.mod-cta {
 
 button.mod-cta:hover {
   background-color: var(--sl-accent-hover);
-  color: var(--text-on-accent);
+  color: var(--sl-pill-text);
 }
 
 button.mod-cta:active {
@@ -977,9 +1033,9 @@ button:disabled {
 /* Inactive / secondary = light gray pill */
 button:not(.mod-cta):not(.mod-warning):not(.mod-destructive) {
   height: var(--sl-control-h-lg);
-  background-color: var(--sl-surface-alt);
+  background-color: var(--sl-inactive-pill-bg);
   color: var(--sl-text);
-  border: 1px solid transparent;
+  border: var(--sl-border-width) solid var(--sl-inactive-pill-border);
   box-shadow: none;
   padding: 0 var(--sl-space-4);
 }
@@ -1013,7 +1069,7 @@ select,
 .dropdown {
   border-radius: var(--sl-radius-pill);
   background-color: var(--sl-surface-alt);
-  border: 1px solid transparent;
+  border: var(--sl-border-width) solid transparent;
   color: var(--sl-text);
   font-size: var(--sl-text-base);
   height: var(--sl-control-h-lg);
@@ -1023,7 +1079,7 @@ select,
 
 textarea {
   border-radius: var(--sl-radius-md);
-  min-height: 80px;
+  min-height: var(--sl-textarea-min-h);
   padding: var(--sl-space-3) var(--sl-space-4);
   height: auto;
 }
@@ -1049,10 +1105,10 @@ input[type="checkbox"],
 .markdown-preview-view .task-list-item-checkbox,
 .cm-formatting-task {
   border-radius: var(--sl-radius-sm);
-  border: 1.5px solid var(--sl-border);
+  border: var(--sl-border-width-strong) solid var(--sl-border);
   background-color: var(--sl-surface);
-  width: 24px;
-  height: 24px;
+  width: var(--sl-checkbox-size);
+  height: var(--sl-checkbox-size);
   box-sizing: border-box;
 }
 
@@ -1112,7 +1168,7 @@ input[type="range"] {
 
 .inline-title {
   font-weight: var(--sl-weight-bold);
-  font-size: var(--sl-text-xl);
+  font-size: var(--sl-text-2xl);
   color: var(--sl-text);
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -1204,9 +1260,9 @@ input[type="range"] {
 .HyperMD-codeblock,
 .markdown-preview-view .markdown-embed,
 pre[class*="language-"] {
-  background-color: var(--sl-app-bg);
+  background-color: var(--sl-surface-alt);
   border-radius: var(--sl-radius-md);
-  border: 1px solid var(--sl-border-subtle);
+  border: var(--sl-border-width) solid var(--sl-border-subtle);
   box-shadow: none;
 }
 
@@ -1218,7 +1274,7 @@ pre[class*="language-"] {
 /* Blockquotes */
 .markdown-preview-view blockquote,
 .cm-quote {
-  border-left: 3px solid var(--sl-pastel-lavender);
+  border-left: var(--sl-accent-bar) solid var(--sl-pastel-lavender);
   color: var(--sl-text-secondary);
   background-color: transparent;
 }
@@ -1227,7 +1283,7 @@ pre[class*="language-"] {
 .markdown-preview-view hr,
 .cm-hr {
   border: none;
-  border-top: 1px solid var(--sl-border-subtle);
+  border-top: var(--sl-border-width) solid var(--sl-border-subtle);
   margin: var(--sl-space-6) 0;
 }
 
@@ -1242,15 +1298,17 @@ pre[class*="language-"] {
 .markdown-preview-view th,
 .markdown-preview-view td {
   border: none;
-  border-bottom: 1px solid var(--sl-border-subtle);
+  border-bottom: var(--sl-border-width) solid var(--sl-border-subtle);
   padding: var(--sl-space-2) var(--sl-space-3);
   text-align: left;
 }
 
 .markdown-preview-view th {
-  color: var(--sl-text-secondary);
+  color: var(--sl-text-muted);
   font-weight: var(--sl-weight-medium);
-  font-size: var(--sl-text-sm);
+  font-size: var(--sl-text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   background: transparent;
 }
 
@@ -1355,7 +1413,7 @@ a.tag:hover,
 .markdown-embed,
 .internal-embed {
   border-radius: var(--sl-radius-lg);
-  border: 1px solid var(--sl-border-subtle);
+  border: var(--sl-border-width) solid var(--sl-border-subtle);
   background-color: var(--sl-app-bg);
   box-shadow: var(--sl-shadow-sm);
 }
@@ -1372,7 +1430,7 @@ a.tag:hover,
 .modal-container .modal {
   background-color: var(--sl-surface-elevated);
   border: none;
-  border-radius: var(--sl-radius-xl);
+  border-radius: var(--sl-radius-2xl);
   box-shadow: var(--sl-shadow-lg);
 }
 
@@ -1469,7 +1527,7 @@ a.tag:hover,
 .vertical-tab-nav-item,
 .horizontal-tab-nav-item {
   border-radius: var(--sl-radius-pill);
-  margin: 1px var(--sl-space-2);
+  margin: var(--sl-border-width) var(--sl-space-2);
   color: var(--sl-text-secondary);
   font-weight: var(--sl-weight-medium);
 }
@@ -1485,8 +1543,8 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active,
 body:not(.is-phone) .horizontal-tab-nav-item.is-active {
   background-color: var(--sl-nav-active-bg);
   color: var(--sl-nav-active-text);
-  border: 1px solid var(--sl-border);
-  box-shadow: var(--sl-shadow-sm);
+  border: var(--sl-border-width) solid var(--sl-border-subtle);
+  box-shadow: var(--sl-shadow-md);
   font-weight: var(--sl-weight-semibold);
 }
 
@@ -1501,7 +1559,7 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active .vertical-tab-nav-item-titl
 }
 
 .setting-item {
-  border-top: 1px solid var(--sl-border-subtle);
+  border-top: var(--sl-border-width) solid var(--sl-border-subtle);
   padding: var(--sl-space-4) 0;
 }
 
@@ -1539,7 +1597,7 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active .vertical-tab-nav-item-titl
 }
 
 .canvas-node.is-focused {
-  box-shadow: 0 0 0 2px var(--sl-accent), var(--sl-shadow-md);
+  box-shadow: var(--sl-focus-shadow), var(--sl-shadow-md);
 }
 
 .workspace-drawer {
@@ -1548,8 +1606,8 @@ body:not(.is-phone) .vertical-tab-nav-item.is-active .vertical-tab-nav-item-titl
 
 /* Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: var(--sl-scrollbar-size);
+  height: var(--sl-scrollbar-size);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -1612,10 +1670,87 @@ select:focus-visible,
   border-radius: var(--sl-radius-pill);
   font-size: var(--sl-text-xs);
   font-weight: var(--sl-weight-semibold);
-  min-width: 16px;
-  height: 16px;
-  line-height: 16px;
+  min-width: var(--sl-badge-size);
+  height: var(--sl-badge-size);
+  line-height: var(--sl-badge-size);
   text-align: center;
-  padding: 0 5px;
+  padding: 0 var(--sl-space-1);
   border: none;
+}
+
+
+/* ==========================================================================
+   12. Properties / frontmatter / fidelity extras (1.1.0)
+   ========================================================================== */
+.metadata-container,
+.mod-frontmatter,
+.cm-hmd-frontmatter,
+.HyperMD-frontmatter {
+  background-color: var(--sl-surface-alt);
+  border-radius: var(--sl-radius-md);
+  border: var(--sl-border-width) solid var(--sl-border-subtle);
+  color: var(--sl-text-secondary);
+}
+
+.metadata-property,
+.metadata-property-key,
+.metadata-property-value {
+  color: var(--sl-text-secondary);
+  font-size: var(--sl-text-sm);
+}
+
+.metadata-property-key {
+  color: var(--sl-text-muted);
+  font-weight: var(--sl-weight-medium);
+}
+
+.metadata-add-button {
+  border-radius: var(--sl-radius-pill);
+  color: var(--sl-text-muted);
+}
+
+/* Disabled text companion */
+.is-disabled,
+button:disabled,
+input:disabled,
+.setting-item.is-disabled .setting-item-name {
+  color: var(--sl-text-disabled);
+}
+
+/* Quiet chrome dividers — prefer surface shift over heavy lines */
+.workspace-split.mod-root .workspace-tabs .workspace-tab-header-container {
+  border-bottom: none;
+}
+
+.view-header {
+  border-bottom-color: var(--sl-border-subtle);
+}
+
+/* Suggestion selected = quiet wash (not charcoal) */
+.suggestion-item.is-selected {
+  background-color: var(--sl-surface-hover);
+  color: var(--sl-text);
+}
+
+/* Menu separators */
+.menu-separator {
+  border-bottom: var(--sl-border-width) solid var(--sl-border-subtle);
+  margin: var(--sl-space-1) 0;
+}
+
+/* Popover / hover editor */
+.popover,
+.horizontal-tab-content,
+.community-modal-details {
+  border-radius: var(--sl-radius-lg);
+}
+
+/* Sync / plugin badges stay black pill language */
+.workspace-tab-header-status-container {
+  opacity: var(--sl-icon-opacity);
+}
+
+.workspace-tab-header.is-active .workspace-tab-header-status-container {
+  opacity: 1;
+  color: var(--sl-pill-text);
 }

@@ -1,14 +1,14 @@
 # Softledger UX flags (education 1.0)
 
-Usability adaptations where soft-UI fidelity fights Obsidian use. **Keep visual language; change the minimum token/selector.** Design SoT: [`TOKENS.md`](TOKENS.md) + `docs/refs/v3`. Audited against theme **v1.0.1** (`c32230a`).
+Usability adaptations where soft-UI fidelity fights Obsidian use. **Keep visual language; change the minimum token/selector.** Design SoT: [`TOKENS.md`](TOKENS.md) + `docs/refs/v3`. Audited against theme **v1.1.0** (fidelity pass).
 
 **Fidelity lock (CoS):** active nav = **white pill**; primary CTA / selected tabs = **black solid pill**; pastel cards; indigo links; **no lime**. Finance lime parked in `docs/proposals/finance-lime/`.
 
 Priority: P0 = fix before polish · P1 = next pass · P2 = comfort / a11y depth.
 
-## Status (1.0.1)
+## Status (1.1.0)
 
-**P0 closed.** P1 closed (tabs/status, semantic text, nav selected cue, hit targets). Optional polish: deepen `--sl-warning-text` past 4.5:1 (currently ≈4.39:1). P2 editor measure still optional.
+**P0/P1 closed.** Warning text deepened to `#8A6508` (≥4.5:1). v1.1.0 adds strict surface aliases, inactive-pill border recipe, 24px leaf radius, properties/frontmatter wash, quieter leaf shadow. P2 editor measure still optional.
 
 ---
 

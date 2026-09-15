@@ -4,7 +4,7 @@ A lightweight [Obsidian](https://obsidian.md) community theme inspired by **educ
 
 **Author:** Ramakrishna Dhikonda · **License:** MIT
 
-**Version:** 1.0.1 — education soft UI (from `docs/refs/v3`); P0/P1 a11y polish. No lime-finance accent.
+**Version:** 1.1.0 — strict token system + visual fidelity pass against `docs/refs/v3`. White nav / black primary pills; no lime.
 
 Design tokens: [`docs/TOKENS.md`](docs/TOKENS.md) · Visual spec: [`docs/VISUAL_SPEC.md`](docs/VISUAL_SPEC.md)
 
@@ -48,10 +48,10 @@ cp Softledger/manifest.json Softledger/theme.css \
 | --- | --- |
 | App canvas | `#F4F4F7` (light) / `#1A1B1F` (dark) |
 | Sidebar | Soft lavender-gray `#F0EFF5` |
-| Main / cards | White `#FFFFFF`, radius 20px, soft shadow |
+| Main / cards | White `#FFFFFF`, radius 24px, subtle border + soft shadow |
 | **Active nav** | **White pill** + dark text |
 | **Primary / tabs / CTA** | **Black solid pill** `#111111` + white text |
-| Inactive pills | Light gray `#EEEEF0` |
+| Inactive pills | Light gray `#EEEEF0` + thin `#EEEEEE` border |
 | Pastels | Lavender / blue / mint / peach / coral |
 | Links | Soft indigo `#5B5BD6` (not lime) |
 | Type | Inter / system UI |
@@ -63,7 +63,8 @@ cp Softledger/manifest.json Softledger/theme.css \
 - `--sl-pill-bg` / `--sl-pill-text` (black primary)
 - `--sl-nav-active-bg` / `--sl-nav-active-text` (white nav pill)
 - `--sl-pastel-*`, `--sl-link`, `--sl-text*`
-- `--sl-shadow-sm|md|lg`, `--sl-radius-sm|md|lg|xl|pill`
+- `--sl-shadow-sm|md|lg`, `--sl-radius-sm|md|lg|xl|2xl|pill`
+- `--sl-inactive-pill-*`, `--sl-text-disabled`, `--sl-focus-shadow`
 
 See `docs/TOKENS.md` and `docs/VISUAL_SPEC.md`.
 
