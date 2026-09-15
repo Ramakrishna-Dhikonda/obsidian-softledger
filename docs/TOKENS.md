@@ -1,114 +1,110 @@
-# Softledger design tokens (v0.2.0)
+# Softledger design tokens (v1.0.0)
 
-Single source of truth for the theme. All component styles consume `--sl-*` tokens (mapped to Obsidian CSS variables). **Do not scatter one-off hex in selectors.**
+Single source of truth for CSS. All component styles consume `--sl-*` (mapped to Obsidian vars). **No scattered one-off hex in selectors.**
 
-Light is the hero (finance-dashboard soft UI). Dark is a coherent soft-card twin — same structure, not a lazy invert.
+Light is the hero (education/schedule soft UI from `docs/refs/v3`). Dark is a coherent soft twin — same structure, not a lazy invert.
 
-**Fidelity lock (must match refs):** light canvas `#F5F7F8`, charcoal pill `#2D2D2D`, dark canvas `#1A1C1E`. Variable names in this file are SoT for CSS.
+**Fidelity lock:** active nav = **white pill**; primary selected / CTA = **black solid pill**; no lime accent.
 
 ## Color
 
 | Token | CSS variable | Light | Dark | Use |
 |-------|--------------|-------|------|-----|
-| App bg | `--sl-app-bg` | `#F5F7F8` | `#1A1C1E` | Workspace canvas, ribbon, title/status bar |
-| Surface | `--sl-surface` | `#FFFFFF` | `#1E2124` | Cards, editor, sidebars |
-| Surface elevated | `--sl-surface-elevated` | `#FFFFFF` | `#25282C` | Modals, menus, notices |
-| Border | `--sl-border` | `#E5E7EB` | `rgba(255,255,255,0.1)` | Inputs, secondary buttons |
-| Border subtle | `--sl-border-subtle` | `rgba(0,0,0,0.05)` | `rgba(255,255,255,0.06)` | Hairlines, dividers, table rows |
-| Text | `--sl-text` | `#1A1A1A` | `#F3F4F6` | Primary copy, headings |
-| Text secondary | `--sl-text-secondary` | `#6B7280` | `#A1A1AA` | Labels, inactive tabs, icons |
-| Text muted | `--sl-text-muted` | `#9CA3AF` | `#71717A` | Meta, status bar, faint |
-| Accent | `--sl-accent` | `#A3E635` | `#A3E635` | Primary CTA, focus, positive |
-| Accent hover | `--sl-accent-hover` | `#8FD62A` | `#BEF264` | CTA / accent hover |
-| Accent soft | `--sl-accent-soft` | `#ECFCCB` | `rgba(163,230,53,0.16)` | Tags, soft washes |
-| Danger | `--sl-danger` | `#EF4444` | `#F87171` | Errors, destructive |
-| Success | `--sl-success` | `#22C55E` | `#4ADE80` | Success states |
-| Warning | `--sl-warning` | `#EAB308` | `#FACC15` | Warnings |
-| Pill bg | `--sl-pill-bg` | `#2D2D2D` | `#E8EAED` | Active tab / selected nav (charcoal / light twin) |
-| Pill text | `--sl-pill-text` | `#FFFFFF` | `#1A1C1E` | On pill backgrounds |
+| App bg | `--sl-app-bg` | `#F4F4F7` | `#1A1B1F` | Workspace canvas, ribbon, title/status |
+| Sidebar | `--sl-sidebar-bg` | `#F0EFF5` | `#1E1F26` | Side docks (lavender-tint gray) |
+| Surface | `--sl-surface` | `#FFFFFF` | `#22232A` | Main content, editor, cards |
+| Surface elevated | `--sl-surface-elevated` | `#FFFFFF` | `#2A2B33` | Modals, menus, notices |
+| Surface alt | `--sl-surface-alt` | `#EEEEF0` | `#2F303A` | Inactive pills, inputs wash |
+| Border | `--sl-border` | `#E4E4E8` | `rgba(255,255,255,0.1)` | Input borders |
+| Border subtle | `--sl-border-subtle` | `#EEEEEE` | `rgba(255,255,255,0.06)` | Hairlines, dividers |
+| Text | `--sl-text` | `#111111` | `#F2F2F4` | Primary copy, titles |
+| Text secondary | `--sl-text-secondary` | `#6B6B73` | `#A0A0AB` | Nav default, labels |
+| Text muted | `--sl-text-muted` | `#8E8E93` | `#787884` | Breadcrumbs, meta, section labels |
+| Accent (primary) | `--sl-accent` | `#111111` | `#F2F2F4` | CTA, focus, primary selected |
+| Accent hover | `--sl-accent-hover` | `#2A2A2A` | `#FFFFFF` | CTA hover |
+| Accent soft | `--sl-accent-soft` | `#EEEEF0` | `rgba(242,242,244,0.12)` | Soft washes |
+| Link | `--sl-link` | `#5B5BD6` | `#A5A6F0` | Inline / external links |
+| Danger | `--sl-danger` | `#E05A5A` | `#F08080` | Errors |
+| Success | `--sl-success` | `#2F9E6B` | `#5DCEA0` | Success |
+| Warning | `--sl-warning` | `#D4A017` | `#E8C04A` | Warnings |
+| Pill primary bg | `--sl-pill-bg` | `#111111` | `#F2F2F4` | Black (light) / light (dark) solid pills |
+| Pill primary text | `--sl-pill-text` | `#FFFFFF` | `#111111` | On primary pills |
+| Nav active bg | `--sl-nav-active-bg` | `#FFFFFF` | `#2F303A` | **White pill** sidebar/explorer |
+| Nav active text | `--sl-nav-active-text` | `#111111` | `#F2F2F4` | On white/elevated nav pill |
+| Badge | `--sl-badge-bg` | `#111111` | `#F2F2F4` | Notification circles |
+| Badge text | `--sl-badge-text` | `#FFFFFF` | `#111111` | On badges |
 
-Supporting: `--sl-forest`, `--sl-overlay`, `--sl-hover`, `--sl-active`, `--sl-focus-ring`, `--sl-selection`, `--sl-scrollbar`, `--sl-disabled-opacity`.
+### Pastels
+
+| Token | Light | Dark (muted) |
+|-------|-------|--------------|
+| `--sl-pastel-lavender` | `#E8E0F8` | `rgba(200,180,240,0.18)` |
+| `--sl-pastel-blue` | `#D8E4F8` | `rgba(160,190,240,0.18)` |
+| `--sl-pastel-mint` | `#CFF0DD` | `rgba(140,220,180,0.16)` |
+| `--sl-pastel-peach` | `#F8E8C8` | `rgba(240,200,140,0.16)` |
+| `--sl-pastel-coral` | `#F5D0CC` | `rgba(240,160,150,0.16)` |
+| `--sl-pastel-cream` | `#F5F0E6` | `rgba(230,220,190,0.12)` |
+
+Supporting: `--sl-overlay`, `--sl-hover`, `--sl-active`, `--sl-focus-ring`, `--sl-selection`, `--sl-scrollbar`, `--sl-disabled-opacity`.
 
 ## Spacing (4px grid)
 
 | Token | Value |
 |-------|-------|
-| `--sl-space-1` | `4px` |
-| `--sl-space-2` | `8px` |
-| `--sl-space-3` | `12px` |
-| `--sl-space-4` | `16px` |
-| `--sl-space-5` | `20px` |
-| `--sl-space-6` | `24px` |
-| `--sl-space-8` | `32px` |
-
-Mapped onto Obsidian `--size-4-*` where useful.
+| `--sl-space-1` … `--sl-space-8` | `4 / 8 / 12 / 16 / 20 / 24 / 32px` |
 
 ## Radii — use **only** these
 
 | Token | Value | Typical use |
 |-------|-------|-------------|
 | `--sl-radius-sm` | `8px` | Tooltips, checkboxes |
-| `--sl-radius-md` | `12px` | Nav rows, menus items, callouts, textareas |
-| `--sl-radius-lg` | `16px` | Menus, notices |
-| `--sl-radius-xl` | `20px` | Leaf cards, modals, settings panels |
-| `--sl-radius-pill` | `999px` | Tabs, buttons, inputs, toggles, tags |
+| `--sl-radius-md` | `12px` | Nav rows, callouts |
+| `--sl-radius-lg` | `16px` | Cards, menus |
+| `--sl-radius-xl` | `20px` | Leaf panels, modals |
+| `--sl-radius-pill` | `999px` | Tabs, buttons, inputs, badges |
 
-## Shadows (soft, not harsh)
+## Shadows
 
 | Token | Light | Dark |
 |-------|-------|------|
-| `--sl-shadow-sm` | `0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03)` | `0 1px 3px rgba(0,0,0,0.25)` |
-| `--sl-shadow-md` | `0 4px 16px rgba(0,0,0,0.06)` | `0 4px 16px rgba(0,0,0,0.35)` |
-| `--sl-shadow-lg` | `0 8px 28px rgba(0,0,0,0.08)` | `0 8px 28px rgba(0,0,0,0.45)` |
-
-Prefer elevation via shadow over heavy borders.
+| `--sl-shadow-sm` | `0 1px 3px rgba(17,17,17,0.04), 0 1px 2px rgba(17,17,17,0.03)` | `0 1px 3px rgba(0,0,0,0.3)` |
+| `--sl-shadow-md` | `0 4px 16px rgba(17,17,17,0.06)` | `0 4px 16px rgba(0,0,0,0.4)` |
+| `--sl-shadow-lg` | `0 8px 28px rgba(17,17,17,0.08)` | `0 8px 28px rgba(0,0,0,0.5)` |
 
 ## Type
 
 | Token | Value |
 |-------|-------|
-| `--sl-font-ui` / `--sl-font-text` | Inter → system UI stack |
+| `--sl-font-ui` / `--sl-font-text` | Inter → system UI |
 | `--sl-font-mono` | JetBrains Mono → SF Mono → ui-monospace |
-| `--sl-text-xs` … `--sl-text-lg` | `11 / 12 / 13 / 14 / 16px` |
+| `--sl-text-xs` … `--sl-text-xl` | `11 / 12 / 13 / 14 / 16 / 20px` |
 | `--sl-weight-regular` … `--sl-weight-bold` | `400 / 500 / 600 / 700` |
-
-Interface chrome leans on `13–14px` medium/semibold; reading text uses Obsidian text font vars.
 
 ## Control system
 
-| Token | Value | Notes |
-|-------|-------|-------|
-| `--sl-control-h` | `32px` | Icons, tab height, nav rows |
-| `--sl-control-h-lg` | `36px` | Buttons, text inputs, search |
-| `--sl-icon-size` | `18px` | Target icon optical size |
+| Token | Value |
+|-------|-------|
+| `--sl-control-h` | `32px` |
+| `--sl-control-h-lg` | `36px` |
+| `--sl-icon-size` | `18px` |
+| `--sl-icon-opacity` | `0.72` (thin-stroke feel) |
 
-## Interaction states
+## Interaction recipes
 
 | State | Pattern |
 |-------|---------|
-| Hover | `--sl-hover` bg (or `--sl-accent-hover` on primary) |
-| Active / pressed | `--sl-active` wash, or slight brightness drop on CTA |
-| Focus | `0 0 0 3px var(--sl-focus-ring)` + accent border on inputs |
-| Disabled | `--sl-disabled-opacity` (~0.45 light / 0.4 dark) |
-| Selected | `--sl-pill-bg` + `--sl-pill-text` (charcoal pill) |
+| Hover | `--sl-hover` |
+| Active | `--sl-active` or CTA brightness |
+| Focus | `0 0 0 3px var(--sl-focus-ring)` |
+| Disabled | `--sl-disabled-opacity` |
+| Nav selected | `--sl-nav-active-bg` + `--sl-nav-active-text` (white pill) |
+| Primary selected | `--sl-pill-bg` + `--sl-pill-text` (black pill) |
 
-## Obsidian mapping (high level)
+## Obsidian mapping
 
 - Surfaces → `--background-primary|secondary*`, `--titlebar-*`, `--ribbon-*`, `--status-bar-*`
 - Text → `--text-normal|muted|faint|accent|*`
-- Accent → `--interactive-accent*`, `--color-accent*`
-- Radii / shadows → `--radius-*`, `--input-radius`, `--button-radius`, `--modal-radius`, `--shadow-*`
-- Nav → `--nav-item-*`
-- Tabs → `--tab-*` (active bg = pill)
-
-## Component recipes
-
-| Component | Recipe |
-|-----------|--------|
-| Active tab | Charcoal pill (`--sl-pill-bg`) + white text |
-| Primary button | Lime pill + dark text |
-| Secondary button | Surface pill + `--sl-border` |
-| Search / inputs | Pill, `36px` height, soft focus ring |
-| File explorer active | Charcoal pill row (`--sl-radius-md` for row, charcoal fill) |
-| Ribbon active | Charcoal circular pill icon |
-| Modal / menu | Elevated surface + `--sl-shadow-lg` + xl/lg radius |
+- Accent → `--interactive-accent*` = black primary; links via `--text-accent` = `--sl-link`
+- Nav → `--nav-item-background-active` = white pill
+- Tabs → `--tab-background-active` = black pill
+- Radii/shadows → `--radius-*`, `--input-radius`, `--modal-radius`, `--shadow-*`

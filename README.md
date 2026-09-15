@@ -1,32 +1,26 @@
 # Softledger
 
-A lightweight [Obsidian](https://obsidian.md) community theme inspired by modern finance-dashboard soft UI — airy light-gray canvas, white floating cards, lime/acid green accents, and charcoal pill tabs.
+A lightweight [Obsidian](https://obsidian.md) community theme inspired by **education / schedule soft UI** — airy light canvas, lavender-tint sidebar, **white active nav pills**, **black solid primary pills**, and soft pastel cards.
 
 **Author:** Ramakrishna Dhikonda · **License:** MIT
 
-**Version:** 0.2.0 — pixel-refinement pass. Design tokens (source of truth): [`docs/TOKENS.md`](docs/TOKENS.md) (v0.2.0).
+**Version:** 1.0.0 — complete rewrite from `docs/refs/v3` (replaces the older lime-finance look).
 
-## Screenshots
+Design tokens: [`docs/TOKENS.md`](docs/TOKENS.md) · Visual spec: [`docs/VISUAL_SPEC.md`](docs/VISUAL_SPEC.md)
 
-![Softledger light](docs/screenshots/softledger-light.png)
+## Screenshots / refs
 
-![Softledger dark](docs/screenshots/softledger-dark.png)
-
-## Screenshots
-
-| Light | Dark |
+| Source | Path |
 | --- | --- |
-| ![Softledger light](docs/refs/ref-1.png) | *(dark mode keeps soft-card language)* |
-| ![Softledger overview](docs/refs/ref-2.png) | ![Softledger cards](docs/refs/ref-3.png) |
-
-> Design refs: `docs/refs/`. Live vault shots: `docs/screenshots/`.
+| Design refs (SoT) | `docs/refs/v3/*.jpg` |
+| Older vault shots | `docs/screenshots/` (pre-v1; visual language superseded) |
 
 ## Install
 
 ### Manual (local)
 
-1. Open your vault’s config folder: **Settings → Community plugins → Open .obsidian folder** (or navigate to `<vault>/.obsidian/`).
-2. Create `themes/Softledger/` if it does not exist:
+1. Open your vault’s config folder: **Settings → Community plugins → Open .obsidian folder** (or `<vault>/.obsidian/`).
+2. Create `themes/Softledger/` if needed:
    ```text
    .obsidian/themes/Softledger/
    ├── manifest.json
@@ -44,39 +38,48 @@ cp Softledger/manifest.json Softledger/theme.css \
   "<vault>/.obsidian/themes/Softledger/"
 ```
 
-Then enable the theme in **Settings → Appearance**.
-
 ## Design notes
-
-Softledger maps a finance-dashboard soft-UI system onto Obsidian:
 
 | Token / idea | Value / behavior |
 | --- | --- |
-| App canvas | `#F5F7F9` (light) / `#141618` (dark) |
-| Cards / panels | `#FFFFFF` / `#1E2124`, radius 20px (xl) |
-| Accent | Lime `#A3E635` — CTAs, focus, positive |
-| Active tabs | Charcoal `#1A1A1A` **pill** + white text (light) |
-| Depth | Soft diffused shadows over hard borders |
-| Type | Inter / system UI via `--font-interface` / `--font-text` |
-| Ribbon | Narrow, blended into canvas; active icon as pill/circle |
+| App canvas | `#F4F4F7` (light) / `#1A1B1F` (dark) |
+| Sidebar | Soft lavender-gray `#F0EFF5` |
+| Main / cards | White `#FFFFFF`, radius 20px, soft shadow |
+| **Active nav** | **White pill** + dark text |
+| **Primary / tabs / CTA** | **Black solid pill** `#111111` + white text |
+| Inactive pills | Light gray `#EEEEF0` |
+| Pastels | Lavender / blue / mint / peach / coral |
+| Links | Soft indigo `#5B5BD6` (not lime) |
+| Type | Inter / system UI |
+| Badges | Black circles, white text |
 
-**Key CSS variables** (theme-owned `--sl-*`, mapped to Obsidian tokens):
+**Key CSS variables** (`--sl-*`):
 
-- `--sl-app-bg`, `--sl-surface`, `--sl-surface-elevated`
-- `--sl-accent`, `--sl-accent-hover`, `--sl-accent-soft`
-- `--sl-pill-bg` / `--sl-pill-text` (active charcoal pill)
-- `--sl-text`, `--sl-text-secondary`, `--sl-text-muted`
-- `--sl-success` / `--sl-warning` / `--sl-danger`
+- `--sl-app-bg`, `--sl-sidebar-bg`, `--sl-surface`, `--sl-surface-alt`
+- `--sl-pill-bg` / `--sl-pill-text` (black primary)
+- `--sl-nav-active-bg` / `--sl-nav-active-text` (white nav pill)
+- `--sl-pastel-*`, `--sl-link`, `--sl-text*`
 - `--sl-shadow-sm|md|lg`, `--sl-radius-sm|md|lg|xl|pill`
-- See `docs/TOKENS.md` for the full token sheet
 
-Obsidian mappings include `--background-primary|secondary`, `--interactive-accent`, `--text-*`, `--nav-item-*`, `--ribbon-background`, tab radii, and modal radii.
+See `docs/TOKENS.md` and `docs/VISUAL_SPEC.md`.
+
+## Known limitations
+
+Obsidian CSS cannot fully recreate the ref mockups:
+
+- Multi-column schedule grids, current-time black line, and floating pastel FABs are app chrome, not themeable 1:1
+- Calendar day cells / attendance charts depend on plugins or note content
+- Graph & canvas only expose limited CSS variables
+- Outer “floating window” 32–40px OS rounding is not controllable from a theme
+- Notification badge circles apply where Obsidian exposes count flair (`.nav-file-tag`, `.tree-item-flair`), not arbitrary nav labels
+
+Within those constraints, chrome (ribbon, sidebars, tabs, explorer, editor, modals, settings) follows the v3 visual language.
 
 ## Performance
 
-- Pure CSS — no build step, no background images, no base64 blobs
-- Lean selector set; no expensive universal `*` rules
-- Target size well under ~80KB (`theme.css` ~36KB in v0.2.0)
+- Pure CSS — no build step, no background images, no base64
+- Tokens-first; lean selectors; no expensive universal `*` rules
+- Target size well under ~80KB
 
 ## Structure
 
@@ -88,8 +91,10 @@ obsidian-softledger/
 ├── README.md
 ├── LICENSE
 └── docs/
-    ├── .gitkeep
-    └── refs/          # UI reference images
+    ├── VISUAL_SPEC.md
+    ├── TOKENS.md
+    ├── refs/v3/       # Source-of-truth screenshots
+    └── screenshots/
 ```
 
 ## Compatibility
